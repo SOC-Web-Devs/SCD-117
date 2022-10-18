@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from ox.cash/user/registration?referral=6 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 09:41:27 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charSet="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="next-head-count" content="3" />
+<title>OXCASH</title>
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="192x192" href="img/favicon/apple-icon-192x192.png">
+<link rel="apple-touch-icon" sizes="256x256" href="img/favicon/apple-icon-256x256.png">
+<link rel="manifest" href="img/favicon/site.html">
+<link rel="preload" href="next/static/css/dash-stylee338.css?v=1665125525" as="style" />
+<link rel="stylesheet" href="next/static/css/dash-stylee338.css?v=1665125525" />
+<noscript data-n-css=""></noscript>
+<link rel="stylesheet" href="next/static/css/assetse338.css?v=1665125525" as="style" />
+<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" integrity="sha512-vebUliqxrVkBy3gucMhClmyQP9On/HAWQdKDXRaAlb/FKuTbxkjPKUyqVOxAcGwFDka79eTF+YXwfke1h3/wfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="../../cdn.ethers.io/scripts/ethers-v4.min.js" charset="utf-8" type="text/javascript"></script>
+<script type="text/javascript" src="../../cdnjs.cloudflare.com/ajax/libs/web3/1.5.2/web3.min.js"></script>
+<link rel="stylesheet" href="../../cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
+<script src="../../cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="../../cdn.jsdelivr.net/npm/tronweb%403.2.6/dist/TronWeb.min.js"></script>
+<script>
+    function showToast(msg, type = 'info') {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        if (type == 'success') {
+            toastr.success(
+                msg,
+            )
+        } else if (type == 'error') {
+            toastr.error(
+                msg,
+            )
+        } else {
+            toastr.info(
+                msg,
+            )
+        }
+    }
+    </script>
+<style>
+        #loader {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background: #18191a;
+            z-index: 999;
+            background-size: cover;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #loader img.img-fluid {
+            height: 60px;
+        }
+        
+        @-webkit-keyframes spin {
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        
+        @keyframes  spin {
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .fa-spin {
+            animation: spin 2s infinite linear;
+        }
+
+        .btn i {
+            font-size: 22px;
+            transition: .5s all;
+        }
+
+        .icon-right {
+            margin-left: 10px;
+        }
+
+        .icon-spinner:before {
+            content: "\e92c";
+        }
+
+        @font-face {
+            font-family: 'forsage icons';
+            src: url(../fonts/forsageIcons/forsageIcons.html);
+            font-style: normal;   
+        }
+
+        [class*=" icon-"]:before, [class^=icon-]:before {
+            font-family: "forsage icons";
+            font-style: normal;
+            font-weight: 400;
+            speak: never;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMS5WKDJCC"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-DMS5WKDJCC');
+    </script>
+</head>
+<body>
+<noscript>
+        Please enable javascript for running this website
+    </noscript>
+<div id="loader"><img src="img/ox-cash-loader1ba2.gif?v=321654654" class="img-fluid" alt=""></div>
+<header class="header">
+<div id="__next1">
+<div class="flex relative bg-main-bg flex-col items-center justify-center w-full min-h-screen text-white-500 px-10 sm:px-0 overflow-hidden pt-16">
+<header class="fixed top-0 w-full pb-2.5 pt-2.5 px-10 z-30 bg-gray-900 sm:px-5 lg:border-b lg:border-white-100">
+<nav class="z-10 w-full max-w-desktop-preview-bar m-auto header-border-b">
+<div class="flex items-center justify-between">
+<a href="../index.html" class="header-link">
+<img src="img/logo/oxcash-logo97d6.png?updated=1665125525" class="light w-20" alt="">
+<img src="img/logo/oxcash-logo97d6.png?updated=1665125525" class="dark w-20" alt="">
+</a>
+<div class="flex justify-end items-center ml-auto"><button class="flex justify-center items-center text-center text-base font-bold text-white rounded-mini sm:text-sm outline-none px-5 py-2.5 bg-black-light hover:bg-line-gray active:bg-active-gray text-white font-normal rounded items-center" onclick="initWalletConnect();" id="connectWallet">Connect wallet</button></div>
+</div>
+</nav>
+<div class="hidden justify-start items-start bg-main-bg pb-5 pt-7.5 transition duration-500 ease-in-out bg-main-bg absolute top-0 left-0 z-20 inset-0 h-screen w-screen z-999999 -translate-x-120% lg:flex flex-col lg:py-2.5">
+<div class="w-full flex flex-col flex-1" style="height: 757px;">
+<div class="flex justify-between items-center w-full px-10 sm:px-5">
+<a href="../index.html">
+<svg class="block mr-2.5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="163" height="30" viewBox="0 0 679 136">
+<image y="11" width="676" height="125" xlink:href="data:img/png;base64,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">
+</image>
+<image x="74" width="72" height="48" xlink:href="data:img/png;base64,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">
+</image>
+</svg>
+</a>
+<button class="flex justify-center items-center text-center text-base font-bold text-white rounded-mini sm:text-sm outline-none px-0 py-0 bg-black-light rounded-full w-10 h-10 hover:bg-line-gray active:bg-active-gray hidden lg:flex flex-col"><span class="w-4 border-t border-white -mb-px rotate-45"></span><span class="w-4 border-t border-white -rotate-45"></span></button>
+</div>
+<div class="w-full h-full pl-10 pr-7.5 lg:pr-0 lg:pl-10 sm:pl-5 overflow-auto">
+<div class="flex flex-1 flex-col h-full w-full overflow-y-auto space-y-2.5 lg:space-y-0">
+<div class="flex flex-1 flex-col w-full h-full overflow-y-auto space-y-2.5 lg:space-y-0 lg:mb-5">
+<a href="../dashboard.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 24 24" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 4H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1ZM19 4h-4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1ZM9 14H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1ZM19 14h-4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Dashboard</span></div>
+</button>
+</a>
+<a href="../partners.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 16 16" fill="none" stroke="#fff" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 7.333A2.667 2.667 0 1 0 6 2a2.667 2.667 0 0 0 0 5.333ZM2 14v-1.333A2.667 2.667 0 0 1 4.667 10h2.666A2.667 2.667 0 0 1 10 12.667V14M10.667 2.086a2.667 2.667 0 0 1 0 5.167M14 14v-1.333a2.667 2.667 0 0 0-2-2.567" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Partners</span>
+</div>
+</button>
+</a>
+<a href="../stats.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 24 24" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 12h5m-9-9v5-5ZM8.929 14.582 5.5 17.5M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Stats</span>
+</div>
+</button>
+</a>
+<a href="../targets.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" stroke="#fff" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Targets</span><span class="absolute top-1 right-1.5 text-orange text-sm lg:bg-orange-200 lg:px-2.5 lg:py-1 lg:rounded lg:top-1/2 lg:-translate-y-1/2 lg:right-5">Beta</span>
+</div>
+</button>
+</a>
+<a href="../information.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 24 24" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 7a2 2 0 0 1 2 2v12l-5-3-5 3V9a2 2 0 0 1 2-2h6Z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M9.265 4A2 2 0 0 1 11 3h6a2 2 0 0 1 2 2v12l-1-.6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Information</span>
+</div>
+</button>
+</a>
+<a href="../tbots.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 24 24" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="m15 10-4 4 6 6 4-16-18 7 4 2 2 6 3-4" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Telegram
+bots</span></div>
+</button>
+</a>
+<a href="../messages.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="m3 20 1.3-3.9c-1.124-1.662-1.53-3.63-1.144-5.538.386-1.908 1.54-3.626 3.244-4.836 1.704-1.21 3.845-1.827 6.024-1.739 2.179.089 4.248.877 5.821 2.22 1.574 1.342 2.546 3.147 2.735 5.078.19 1.931-.417 3.858-1.706 5.422-1.29 1.564-3.173 2.659-5.302 3.08-2.13.422-4.358.142-6.272-.787L3 20" stroke="#fff" stroke-opacity=".5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M12 12v.01M8 12v.01M16 12v.01" stroke="#fff" stroke-opacity=".5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Messages</span>
+</div>
+</button>
+</a>
+<div class="hidden lg:block" href="undefined.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent false lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" viewBox="0 0 20 20" fill="none" stroke="#fff" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.333 14.167a5.833 5.833 0 1 0 0-11.667 5.833 5.833 0 0 0 0 11.667ZM17.5 17.5l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 false">Red Rhino
+Account search</span></div><svg class="stroke-current text-white-500 hidden lg:flex" width="8" height="14" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="m1 13 6-6M1 1l6 6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<a class="hidden lg:block" href="../index.html">
+<button class="relative w-full flex items-center px-2.5 py-2 rounded-xl cursor-pointer undefined hover:bg-black-light lg:hover:bg-transparent bg-black-light lg:bg-transparent lg:border-b lg:border-white-300 lg:rounded-none lg:pl-0 lg:pr-5 lg:py-5 lg:justify-between">
+<div class="flex items-center text-left"><svg class="w-6 h-6 stroke-current text-white-500 lg:w-5 lg:h-5" width="24" height="24" stroke="#fff" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 8V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2M7 12h14m0 0-3-3m3 3-3 3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg><span class="text-white-500 text-base  ml-5 text-white-900">Log
+out</span></div>
+</button>
+</a>
+</div>
+</div>
+</div>
+<div class="w-full lg:px-5 lg:pb-7.5">
+<a target="_blank" href="https://oldrrn.redrhino.io/">
+<button class="flex justify-center items-center text-center text-base font-bold text-white rounded-mini sm:text-sm outline-none px-5 py-3 bg-light-purple hover:bg-hover-purple active:bg-active-purple bg-purple rounded-mini px-3 w-full justify-between mb-2.5 lg:mb-0">
+<span class="text-white text-base font-normal">Old interface</span>
+<svg class="h-5" viewBox="0 0 46 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 14C1 6.82 6.82 1 14 1h18c7.18 0 13 5.82 13 13s-5.82 13-13 13H14C6.82 27 1 21.18 1 14Z" stroke="#fff"></path>
+<circle cx="14" cy="14" r="9" fill="#fff"></circle>
+</svg>
+</button>
+</a>
+</div>
+</div>
+</div>
+</header>
+<div class="flex flex-col flex-1 w-full max-w-desktop-login mt-7.5 sm:mt-0">
+<div class="flex flex-1 items-center justify-between w-full sm:flex-col px-3">
+<div class="flex flex-1 flex-col items-start mr-10 sm:mr-0 sm:items-stretch sm:max-w-full sm:p-5">
+<div class="flex flex-col sm:flex-1"><span class="inline-block text-two-half text-white mb-10 sm:mb-7.5 sm:text-2xl"> Registration <br> in Ox Cash </span>
+<div class="flex flex-col mb-10 sm:mb-7.5">
+<div class="w-full relative flex flex-col flex-grow-0 flex-shrink-0"><label class="mb-2.5 text-white-500 sm:text-sm">Your upline</label>
+<div class="w-full relative"><input class="w-full bg-white-100 border-2 border-transparent rounded-mini py-3 px-5 text-white outline-none focus:border-2 focus:border-main-blue focus:bg-transparent false" type="text" placeholder="Upline" value="1" id="referralInput" onchange="updateReferral(this.value);"></div>
+</div>
+</div>
+<div class="flex flex-col space-y-5">
+<div class="flex flex-col items-start">
+<div class="flex ">
+<i class="las la-info-circle text-3xl text-base"></i>
+<div class="flex flex-wrap items-center ml-2.5 leading-5 text-base whitespace-nowrap" id="regbalance"><span>Balance</span></div>
+</div>
+</div>
+<div class="flex flex-col items-start">
+<div class="flex ">
+<i class="las la-info-circle text-3xl text-base"></i>
+<div class="flex flex-wrap items-center ml-2.5 leading-5 text-base whitespace-nowrap" id="regregistration"><span>Registration</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex">
+<button class="flex justify-center items-center text-center text-base font-bold text-white rounded-mini sm:text-sm outline-none px-5 py-3 bg-blue-600 hover:bg-blue-400 active:bg-active-red-600 mt-10 py-5 !px-10 sm:py-3  sm:mt-7.5" id="nextButton" onclick="register();">Register </button>
+
+</div>
+</div>
+<div class="bg-white-100 rounded p-10 max-w-desktop-reg-info-card w-full flex-shrink h-auto flex flex-col sm:min-h-auto sm:mb-10 sm:max-w-full">
+<div class="flex flex-1 items-start w-full">
+<div class="flex flex-col">
+<span class="flex items-center text-white text-2xl font-bold mb-5 sm:mb-2.5">
+<svg class="inline w-6 h-6 mr-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="24" height="24" rx="12" fill="#fff"></rect>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 8a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 0 1.5H12a.75.75 0 0 1-.75-.75ZM10.25 12a.75.75 0 0 1 .75-.75h1a.75.75 0 0 1 .75.75v3.25H13a.75.75 0 0 1 0 1.5h-1a.75.75 0 0 1-.75-.75v-3.25H11a.75.75 0 0 1-.75-.75Z" fill="#343A4D"></path>
+</svg>
+How to Invest in Ox Cash
+</span>
+<div class="flex flex-col">
+<span class="">Access the website via TronLink dapp browser (”Discover” button in Tokenpoket) or with TronLink extension installed.</span>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<footer class="flex z-10  items-center  justify-between  py-10 w-full sm:justify-start sm:items-start sm:flex-col sm:px-5 sm:pt-7.5 sm:pb-12 sm:mt-0">
+<div class="flex items-center sm:w-full sm:items-start sm:text-left sm:flex-col sm:order-2"><span class="text-white-500 text-base font-normal mr-2.5 sm:text-sm sm:mb-2.5 sm:mr-0">© 2022 All Rights Reserved</span></div>
+<div class="flex space-x-14 sm:w-full sm:space-y-14 sm:space-x-0 sm:order-1 sm:mb-7.5">
+<div class="flex space-x-5 w-full"><a class="w-6 h-6 sm:w-7 sm:h-7 flex justify-center items-center rounded-full bg-white-100 hover:bg-white-300" target="_blank" href="https://t.me/oxcashnetwork"><svg class="w-3 h-3 sm:w-4 sm:h-4" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.915.776.841 5.168a.4.4 0 0 0 .03.755l2.79.864 1.133 3.503a.4.4 0 0 0 .653.17l1.64-1.523 3.11 2.29a.4.4 0 0 0 .627-.231l2.166-9.294a.8.8 0 0 0-1.075-.926Zm-6.483 6.74-.346 2.072-.8-2.901 7.816-5.1-6.67 5.929Z" fill="#fff"></path>
+</svg></a>
+
+</div>
+</div>
+</footer>
+</div>
+</div>
+<div class="Toastify"></div>
+</div>
+<script type="text/javascript">
+        let l1;
+        let explorer = 'https://tronscan.org/#/transaction/';
+        async function initWalletConnect() {
+            let tronWeb = window.tronWeb;
+
+            try{
+                tronLink.request({method: 'tron_requestAccounts'})
+            }catch(err){
+                console.log(err);
+            }
+
+            if (!window.tronWeb)
+            {
+                // alert("No crypto wallet found. Please install it.");
+            }else
+            {
+                
+                let currentaddress = tronWeb.defaultAddress.base58;
+                    var balance = await tronWeb.trx.getBalance(currentaddress);
+                try{
+                l1 = await tronWeb.contract().at('TVQiMUxYCo2s1q2uDhEtVcZ2aMu2AQq816');
+                }catch(Err){
+                    console.log(Err);
+                }
+
+                encrypted = currentaddress.slice(0, 5);
+
+                encrypted += "##";
+
+                encrypted += currentaddress.substr(-4);
+
+                document.getElementById('connectWallet').innerHTML = encrypted;
+            }
+
+            // const xhttp = new XMLHttpRequest();
+            // xhttp.onload = function() {
+            //     console.log(this.responseText);
+            // }
+            // xhttp.open("POST", "https://game.itficial.app/user/wallet-connect-register");
+            // xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            // xhttp.send("wallet_address="+walletaddress+"&_token=fCfBo0GjPdh73nOeS7r8h7r8459KtUQ5mou3V8iY");
+        }
+
+        function getPara(parameterName) {
+            var result = null,
+                tmp = [];
+            var items = location.search.substr(1).split("&");
+            for (var index = 0; index < items.length; index++) {
+                tmp = items[index].split("=");
+                if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+            }
+            return result;
+        }
+
+        // window.onload = function() {
+        //     // document.getElementById("loader").style.display = "none";
+        // }
+
+    </script>
+</body>
+
+<!-- Mirrored from ox.cash/user/registration?referral=6 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Oct 2022 09:41:28 GMT -->
+</html><script type="text/javascript">
+window.onload = function() {
+    document.getElementById("loader").style.display = "none";
+    getreferrer = getPara("referral");
+
+    if (getreferrer != null && getreferrer != '') {
+        document.getElementById("referralInput").value = getreferrer;
+    } else {
+        getreferrer = document.getElementById("referralInput").value;
+    }
+
+    initWalletConnect();
+    setTimeout(function() {doProcess()}, 3000);
+}
+
+
+
+async function doProcess() {
+
+    userAddress = tronWeb.defaultAddress.base58;
+
+    let bal = await tronWeb.trx.getBalance(userAddress);
+
+    let userInfo = await l1.methods.userInfos(userAddress).call()
+
+    if (bal > 1) {
+        var regbalance = document.getElementById("regbalance");
+        regbalance.classList.remove("text-base");
+        regbalance.classList.add("text-green");
+
+        showToast('You have balance for registration', 'success');
+
+        regbalance.previousElementSibling.classList.remove("la-info-circle");
+        regbalance.previousElementSibling.classList.add("la-check-circle");
+        regbalance.previousElementSibling.classList.remove("text-base");
+        regbalance.previousElementSibling.classList.add("text-green");
+    } else {
+        var regbalance = document.getElementById("regbalance");
+        regbalance.classList.remove("text-base");
+        regbalance.classList.add("text-red");
+
+        showToast('Please add balance for registration', 'success');
+
+        regbalance.previousElementSibling.classList.remove("text-base");
+        regbalance.previousElementSibling.classList.add("text-red");
+    }
+
+
+    if (userInfo.joined == true) {
+        var regregistration = document.getElementById("regregistration");
+        regregistration.innerHTML = '<span>You are already registered please login</span>'
+        regregistration.classList.remove("text-base");
+        regregistration.classList.add("text-red");
+
+        showToast('You are already registered please login');
+
+        document.getElementById("nextButton").innerHTML = "Login";
+            document.getElementById("nextButton").onclick = function() {
+                loginWallet();
+            };
+
+        regregistration.previousElementSibling.classList.remove("text-base");
+        regregistration.previousElementSibling.classList.add("text-red");
+
+        return false;
+    } else {
+        var regregistration = document.getElementById("regregistration");
+        regregistration.classList.remove("text-base");
+        regregistration.classList.add("text-green");
+
+        showToast('You are eligible to register', 'success');
+
+        regregistration.previousElementSibling.classList.remove("la-info-circle");
+        regregistration.previousElementSibling.classList.add("la-check-circle");
+        regregistration.previousElementSibling.classList.remove("text-base");
+        regregistration.previousElementSibling.classList.add("text-green");
+    }
+}
+
+async function loginWallet() {
+    userAddress = tronWeb.defaultAddress.base58;
+
+    let userInfo = await l1.methods.userInfos(userAddress).call()
+
+    window.location.href = "http://ox.cash/user/dashboard?user_id="+userInfo.id
+}
+
+async function updateReferral(referrer) {
+    getreferrer = referrer;
+}
+
+let reg;
+
+async function register() {
+
+    document.getElementById("nextButton").disabled = true;
+    document.getElementById("nextButton").innerHTML = '<i class="icon-spinner  fa-spin"></i>';
+        try {
+
+                reg = await l1.methods.regUser(getreferrer).send({callValue: 200000000,from: window.tronWeb.defaultAddress.base58,shouldPollResponse: false,feeLimit: 400000000})
+
+                // let buy =  l1.methods.buyLevel(level).send({ callValue: price, from: window.tronWeb.defaultAddress.base58, shouldPollResponse: false, feeLimit: 400000000 }
+
+                console.log(reg);
+
+
+                Swal.fire({
+                    timer: 10000,
+                    timerProgressBar: true,
+                    html: 'Registration process initiated <br>' +
+                    '<a href="'+explorer+reg+'" target="_blanck" style="color:#0a9fe0">Check Transaction</a> ',
+                    confirmButtonColor: '#0a9fe0',
+                })
+            
+                showToast('Registration process initiated', 'info');
+                document.getElementById("nextButton").innerHTML = '<i class="icon-spinner  fa-spin"></i>';
+                
+                setTimeout(function() {syncTransaction()}, 3000);
+                // syncTransaction();
+            
+        } catch (err) {
+            console.log(err);
+            // showToast('Something went wrong please try again later', 'danger');
+            showToast("Unhandled Error - "+err)
+            document.getElementById("nextButton").innerHTML = 'Register';
+            document.getElementById("nextButton").disabled = false;
+        }
+}
+
+
+async function syncTransaction(){
+    
+    const myInterval = setInterval(async function () {
+            
+            console.log(reg);
+            let returnRet = await tronWeb.trx.getTransaction(reg);
+            
+            console.log(returnRet.ret[0].contractRet);
+
+            if(returnRet.ret[0].contractRet == "SUCCESS")
+            {
+                let userInfo = await l1.methods.userInfos(userAddress).call()
+                console.log(userInfo);
+                if (userInfo.joined == true) {
+                    clearInterval(myInterval);
+                    setTimeout(function() {
+                        set_txns(reg);
+                        tron_txns()
+                    }, 60000);
+                }
+            }else if(returnRet.ret[0].contractRet != '') 
+            {
+                
+                showToast('Something went wrong please try again later.', 'error');
+                
+                clearInterval(myInterval);
+
+                window.location.href = "registrationd41d.html?"
+            }
+    }, 1000);
+}
+
+function set_txns(trx)
+   {
+      // userId = getPara('user_id');
+
+      $.ajax({
+          url: "http://ox.cash/user/set-txns",
+          type:"POST",
+          data:{
+          "trx":trx,
+          "_token": "ksAJGDFoasbdASD65465as4d65AS4DaSD564",
+          "type": "API"
+          },
+          success:function(response){
+          console.log(response);
+              // if(response) {
+              //     $('.success').text(response.success);
+              //     $("#ajaxform")[0].reset();
+              // }
+              
+          },
+          error: function(error) {
+          console.log(error);
+          }
+      });
+   }
+
+function tron_txns()
+{
+  // userId = getPara('user_id');
+
+  $.ajax({
+      url: "http://ox.cash/user/tron-transaction",
+      type:"POST",
+      data:{
+      "_token": "ksAJGDFoasbdASD65465as4d65AS4DaSD564",
+      "type": "API"
+      },
+      success:function(response){
+      console.log(response);
+          // if(response) {
+          //     $('.success').text(response.success);
+          //     $("#ajaxform")[0].reset();
+          // }
+          window.location.href = "registration.html"
+      },
+      error: function(error) {
+      console.log(error);
+      }
+  });
+}
+
+</script>
