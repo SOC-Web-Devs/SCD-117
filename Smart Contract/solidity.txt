@@ -1,0 +1,108 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract mlm{
+
+uint[6] _level = [0,1,2,3,4];
+struct user_account { 
+  uint user_id;
+  string user_name;
+  address unique_referral;
+  address parent_referral;
+  uint level_id;
+  uint amount;
+  }
+   mapping (uint => user_account) public users;
+
+  event savingsEvent(uint indexed _userId);
+  uint public userCount;
+ address private owner;
+ uint public _userID;
+
+constructor() public {
+   userCount = 0;
+     _userID = 0;
+     owner = msg.sender;
+  }
+
+address[] saveUniqueReferral;
+
+  function createUser( string memory user_name, address unique_referral,address parent_referral  , uint amount) public returns(string memory){ 
+
+   if(userCount == 0){
+    users[userCount] = user_account(userCount,user_name, unique_referral,parent_referral,0,amount);
+    saveUniqueReferral.push(unique_referral);
+    userCount++;
+    
+   }
+   else if(userCount <=2){
+      if(verifyUniqueReferral(parent_referral) == true){
+    users[userCount] = user_account(userCount,user_name,unique_referral, parent_referral,1,amount);
+    saveUniqueReferral.push(unique_referral);
+    userCount++;
+       }
+       else{
+           return "id not valid";
+       }
+   }
+   else if(userCount <=6){
+    users[userCount] = user_account(userCount,user_name,unique_referral, parent_referral,2,amount);
+    saveUniqueReferral.push(unique_referral);
+    userCount++;
+   }
+   else if(userCount <=14){
+    users[userCount] = user_account(userCount,user_name,unique_referral, parent_referral,3,amount);
+    saveUniqueReferral.push(unique_referral);
+    userCount++;
+   }
+   else if(userCount <=30){
+    users[userCount] = user_account(userCount,user_name,unique_referral, parent_referral,4,amount);
+    saveUniqueReferral.push(unique_referral);
+    userCount++;
+   }
+   else{
+       return "matrix is full";
+   }
+     _userID++;
+  }
+  function verifyUniqueReferral(address referral) public returns(bool){
+      for(uint i = 0; i<=saveUniqueReferral.length; i++){
+          if(referral == saveUniqueReferral[i]){
+              return true;
+              break;        
+              }
+              else{
+                  continue;
+              }
+      }
+  }
+
+  function getarrayVAlue() external view returns(address[] memory) {
+        return saveUniqueReferral;
+    }
+  function getUser(uint _userIDd) public view returns(user_account memory){
+      return users[_userIDd];
+  }
+   function getOwner(
+    ) public view returns (address) {    
+        return owner;
+    }
+
+    function getBalance(
+    ) public view returns(uint256){
+        return owner.balance;
+    }
+    function receiveEther() public payable{
+
+    }
+    function getBalanceagain() public view returns(uint){
+        return address(this).balance;
+    }
+    function transferEther(address payable add , uint am) payable public {
+        add.transfer(am);
+    }
+}
+
+
+
