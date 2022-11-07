@@ -1,0 +1,55 @@
+// SPDX-License-Identifier: GPL-3.0
+
+pragma solidity >=0.7.0 <0.9.0;
+
+contract userAdd{
+  mapping (uint => uint) public _slotPrice;
+  address public _owner;
+  uint256 public _uniqueId;
+  struct _userRegistration { 
+  uint256 _uniqueId;
+  address _walletAddress;
+  uint256 _referralId;
+  uint _slotPackage;
+  }
+  mapping (uint256 => _userRegistration) public users;
+  constructor(){
+      _slotPrice[1] = 200;
+      _slotPrice[2] = 400;
+      _slotPrice[3] = 800;
+      _slotPrice[4] = 1600;
+      _slotPrice[5] = 3200;
+      _slotPrice[6] = 6400;
+      _slotPrice[7] = 12800;
+      _slotPrice[8] = 25000;
+      _slotPrice[9] = 50000;
+      _slotPrice[10] = 100000;
+      _slotPrice[11] = 200000;
+      _slotPrice[12] = 400000;
+      _slotPrice[13] = 800000;
+      _slotPrice[14] = 1500000;
+      _slotPrice[15] = 3000000;
+      _owner = msg.sender;
+  }
+
+  function createUsers(uint256 referralId , uint slotPackage) public{
+      require(slotPackage > 0 && slotPackage < 16);
+      _uniqueId++;
+      address walletAddress = msg.sender;
+      users[_uniqueId] = _userRegistration(_uniqueId,walletAddress,referralId,_slotPrice[slotPackage]);
+      
+  }
+
+  function getMembers() public view returns (_userRegistration[] memory){
+      _userRegistration[]  memory id = new _userRegistration[](_uniqueId);
+      for (uint i = 0; i < _uniqueId; i++) {
+          _userRegistration storage member = users[i+1];
+          id[i] = member;
+      }
+      return id;
+  }
+
+
+
+
+}
