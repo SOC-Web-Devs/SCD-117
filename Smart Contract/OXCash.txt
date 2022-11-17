@@ -23,8 +23,9 @@ contract userAdd{
       uint256 _uniqueId;
       uint256 _referralId;
   }
+  
   mapping (uint256 => _userRegistration) public users;
-  mapping(uint => mapping(uint => _userGuide) )public nestdUsersMapping;
+  mapping(uint256 => mapping(uint256 => mapping(uint256 => _userRegistration))) public userCyclePosition;
   constructor(){
       _slotPrice[1] = 200;
       _slotPrice[2] = 400;
@@ -49,18 +50,21 @@ contract userAdd{
 
 
 ////////////////////////////////////////////////////////////////////////
-function _insertUser(uint256 referralId , uint key , uint slotPackages) public returns(string memory) {
+function _createInsertUser(uint256 referralId , uint slotPackages) public  {
 
 //check the referral is valid or not 
-require(validReferral(referralId) == true || referralId == 0 , "Referral ID is not valid");
+require(validReferralCycle(referralId) == true || referralId == 0 , "Referral ID is not valid");
 require(slotPackages > 0 && slotPackages < 16);
+_uniqueId++;
+address walletAddresss = msg.sender;
+userCyclePosition[_uniqueId][0][0] = _userRegistration(_uniqueId,walletAddresss,referralId,_slotPrice[slotPackages]);
 //_uniqueId++;
- if(users[key]._walletAddress == msg.sender){
-     return "User exist";
- }
- else{
-     return "user not exist";
- }
+//  if(users[key]._walletAddress == msg.sender){
+//      return "User exist";
+//  }
+//  else{
+//      return "user not exist";
+//  }
 // check the user exist or not 
 //create user using unique id 
 //if the user exist then add child in it 
@@ -69,27 +73,40 @@ require(slotPackages > 0 && slotPackages < 16);
 }
 /////////////////////////////////////////////////////////////////////////
 
+function insertUserIn(uint _packageNumber, uint referralId) public payable {
+  require(validReferralCycle(referralId) == true, "Referral ID is not valid");
+  if(checkUserWithCycleExistOrNot(_packageNumber) == true){
+     /////////////////////////////////////////////////////
+  }
+  else{
+    _createInsertUser(referralId,_packageNumber);
+  }
+  
+}
 
 
 
-  function createUsers(uint256 referralId , uint slotPackage) public{
-      require(slotPackage > 0 && slotPackage < 16);
-      require(validReferral(referralId) == true || referralId == 0 , "Referral ID is not valid");
-      //require(checkUserExistOrNot() == true || referralId == 0 , "user not existed");
-      _uniqueId++;
-      address walletAddress = msg.sender;
-      users[_uniqueId] = _userRegistration(_uniqueId,walletAddress,referralId,_slotPrice[slotPackage]);
+
+/////////////////////////////////////////////////////////////////////////
+
+//   function createUsers(uint256 referralId , uint slotPackage) public{
+//       require(slotPackage > 0 && slotPackage < 16);
+//       require(validReferral(referralId) == true || referralId == 0 , "Referral ID is not valid");
+//       //require(checkUserExistOrNot() == true || referralId == 0 , "user not existed");
+//       _uniqueId++;
+//       address walletAddress = msg.sender;
+//       users[_uniqueId] = _userRegistration(_uniqueId,walletAddress,referralId,_slotPrice[slotPackage]);
       
-  }
+//   }
 
-  function getMembers() public view returns (_userRegistration[] memory){
-      _userRegistration[]  memory id = new _userRegistration[](_uniqueId);
-      for (uint i = 0; i < _uniqueId; i++) {
-          _userRegistration storage member = users[i+1];
-          id[i] = member;
-      }
-      return id;
-  }
+//   function getMembers() public view returns (_userRegistration[] memory){
+//       _userRegistration[]  memory id = new _userRegistration[](_uniqueId);
+//       for (uint i = 0; i < _uniqueId; i++) {
+//           _userRegistration storage member = users[i+1];
+//           id[i] = member;
+//       }
+//       return id;
+//   }
 
   /////////get all the elements of particular referral id
 //    function getReferralMembers(uint _getReferralId) public view returns (_userRegistration[] memory){
@@ -101,8 +118,21 @@ require(slotPackages > 0 && slotPackages < 16);
 //       return id;
 //   }
 /////////////////////////////////////////////////////////////
-    function validReferral(uint256 key) public view returns (bool) {
-        if(users[key]._uniqueId > 0){
+    // function validReferral(uint256 key) public view returns (bool) {
+    //     if(users[key]._uniqueId > 0){
+    //         return true;
+    //     } 
+    //     else{
+    //         return false;
+    //     }
+       
+    // }
+  ////////////////////////////////////////////////////////
+
+//Check valid Referral
+/////////////////////////////////////////////////////////////
+    function validReferralCycle(uint256 key ) public view returns (bool) {
+        if(userCyclePosition[key][0][0]._uniqueId > 0 ){
             return true;
         } 
         else{
@@ -111,18 +141,69 @@ require(slotPackages > 0 && slotPackages < 16);
        
     }
   ////////////////////////////////////////////////////////
-  function checkUserExistOrNot() public view returns(bool){
+  function checkUserWithCycleExistOrNot(uint packageNum) public view returns(bool){
       bool existOrNot = false;
       for(uint i = 0 ; i<= _uniqueId ; i++){
-          if(users[i]._walletAddress == msg.sender){
+          if(userCyclePosition[i][0][0]._walletAddress == msg.sender && userCyclePosition[i][0][0]._slotPackage ==_slotPrice[packageNum] && packageNum >= 1 && packageNum<=15){
               existOrNot =  true;
+
               break;
           }
       }
       return existOrNot;
   }
+    ////////////////////////////////////////////////////////
+
+//   function checkUserExistOrNot() public view returns(bool){
+//       bool existOrNot = false;
+//       for(uint i = 0 ; i<= _uniqueId ; i++){
+//           if(users[i]._walletAddress == msg.sender){
+//               existOrNot =  true;
+//               break;
+//           }
+//       }
+//       return existOrNot;
+//   }
+  /////////////////////////////////////////////////////////
+  //get all the value using parent 
+  /////////////////////////////////////////////////////////
+//   function getAlltheParentNode(uint parentReferralID) public view returns(uint,uint256[] memory){
+//       //get all the results by using parent ID
+//       uint256[] memory arr = new uint[](_uniqueId);
+//       uint j= 0;
+//       //_userRegistration[]  memory referralRecord = new _userRegistration[](_uniqueId);
+//       for(uint i = 1 ; i<=_uniqueId; i++){
+//           if(users[i]._parentReferralId == parentReferralID ){ 
+//               arr[j] = users[i]._uniqueId; 
+//               j++; 
+//                //array.push(users[i]._uniqueId);
+//          // _userRegistration storage member = users[i];
+//          // referralRecord[i] = member;
+//                   }       
+//       }
+
+//      // return referralRecord;
 
 
+    
+//      return (parentReferralID,arr);
+//   }
 
+//   function nonZero(uint parentReferralID) public returns(uint256[] memory){
+//     uint256[] memory nonZero =  new uint[](_uniqueId);
+//      nonZero  =getAlltheParentNode(parentReferralID);
+//      uint256[] memory myArray;
+//      uint j = 0;
+//      for(uint i = 0 ; i<nonZero.length ; i++){
+//          if(nonZero[i] == 0){
 
+//          }
+//          else{
+//              myArray[j] = nonZero[i];
+//              j++;
+//          }
+//      }
+//       return myArray;
+//   }
+ 
 }
