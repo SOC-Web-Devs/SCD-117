@@ -58,6 +58,14 @@ require(slotPackages > 0 && slotPackages < 16);
 _uniqueId++;
 address walletAddresss = msg.sender;
 userCyclePosition[_uniqueId][0][0] = _userRegistration(_uniqueId,walletAddresss,referralId,_slotPrice[slotPackages]);
+if(referralId == 0){
+
+}
+else{
+
+/////////////////////////////3//////////fffsdf/////////2////////////1///////
+treeFunctionWithRecursion(_uniqueId,walletAddresss,referralId,slotPackages);
+}
 //_uniqueId++;
 //  if(users[key]._walletAddress == msg.sender){
 //      return "User exist";
@@ -85,6 +93,41 @@ function insertUserIn(uint _packageNumber, uint referralId) public payable {
 }
 
 
+
+
+/////////////////////////////////////////////////////////////////////////
+ 
+ function treeFunctionWithRecursion(uint _uniqueIdd,address walletAddress ,uint referralIddof,uint _packageNumber ) public returns(uint){
+   uint cycle = 0;
+   uint position = 0;
+   while(userCyclePosition[referralIddof][cycle][position]._uniqueId > 0 ){
+     if(userCyclePosition[referralIddof][cycle][position]._slotPackage > 0 ){
+       position++;
+     }
+     if(position >=12){
+       cycle++;
+       position = 1;
+     }
+     //////////////////////////////////////////////////////////////////
+  //userCyclePosition[referralId][cycle][position] = _userRegistration(_uniqueIdd , walletAddress , referralId, _slotPrice[_packageNumber]);
+  // if(userCyclePosition[referralId][cycle][position]._slotPackage > 0){
+  //    position++;
+  //    return "plusplus";
+  //  }
+  //  else{
+  //    userCyclePosition[referralId][cycle][position] = _userRegistration(_uniqueIdd , walletAddress , referralId, _slotPrice[_packageNumber]);
+  //    return "insert record";
+  //  }
+   }
+   userCyclePosition[referralIddof][cycle][position] = _userRegistration(_uniqueIdd , walletAddress , referralIddof, _slotPrice[_packageNumber]);
+   return position;
+ }
+
+
+
+//  function valueDirectInsert(uint _uniqueIdd,address walletAddress,uint _packageNumber ,uint referralId , uint position ) public {
+//          userCyclePosition[1][0][position] = _userRegistration(_uniqueIdd , walletAddress , referralId, _slotPrice[_packageNumber]);
+//      }
 
 
 /////////////////////////////////////////////////////////////////////////
