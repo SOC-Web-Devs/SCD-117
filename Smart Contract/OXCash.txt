@@ -103,6 +103,7 @@ function insertUserIn(uint _packageNumber, uint referralId) public payable {
    while(userCyclePosition[referralIddof][cycle][position]._uniqueId > 0 ){
      if(userCyclePosition[referralIddof][cycle][position]._slotPackage > 0 ){
        position++;
+       ///three cases  
      }
      if(position >=12){
        cycle++;
@@ -120,6 +121,14 @@ function insertUserIn(uint _packageNumber, uint referralId) public payable {
   //  }
    }
    userCyclePosition[referralIddof][cycle][position] = _userRegistration(_uniqueIdd , walletAddress , referralIddof, _slotPrice[_packageNumber]);
+   if(referralIddof ==1){
+
+   }
+   else{
+      uint parentID = userCyclePosition[referralIddof][0][0]._parentReferralId;
+      userCyclePosition[parentID][0][3] = _userRegistration(_uniqueIdd , walletAddress , referralIddof, _slotPrice[_packageNumber]);
+   }
+  // 
    return position;
  }
 
@@ -129,7 +138,12 @@ function insertUserIn(uint _packageNumber, uint referralId) public payable {
 //          userCyclePosition[1][0][position] = _userRegistration(_uniqueIdd , walletAddress , referralId, _slotPrice[_packageNumber]);
 //      }
 
+/////////////////////////////////////////////////////////////////////////
+ function GrandChild(uint parentOfParentReferralID) public {
+   
 
+
+ }
 /////////////////////////////////////////////////////////////////////////
 
 //   function createUsers(uint256 referralId , uint slotPackage) public{
