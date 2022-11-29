@@ -13,6 +13,8 @@ app.use(cors());
  require("./routes/getAgentByIdRoutes")(app);
  require("./routes/matrixRoutes")(app);
  require("./routes/getMatrixDataRoutes")(app);
+ require("./routes/updateParentIdRoutes")(app);
+ require("./routes/updateLeftRightChild")(app);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
